@@ -1,4 +1,5 @@
 import { use, Suspense } from 'react'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getMeal } from '@/lib/meals'
 import s from './page.module.css'
@@ -6,6 +7,11 @@ import s from './page.module.css'
 export default function MealDetailPage({ params }) {
 	const { mealSlug } = use(params)
 	const meal = getMeal(mealSlug)
+
+	if (!meal) {
+		notFound()
+	}
+
 	const instructions = meal.instructions.replace(/\n/g, '<br/>')
 
 	return (
