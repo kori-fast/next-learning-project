@@ -11,5 +11,7 @@
 	"arrowParens": "avoid",
 
 	"jsxSingleQuote": true,
-	"jsxBracketSameLine": false
+	"jsxBracketSameLine": false,
+
+	"singleAttributePerLine": true
 }
