@@ -4,6 +4,20 @@ import Image from 'next/image'
 import { getMeal } from '@/lib/meals'
 import s from './page.module.css'
 
+export async function generateMetadata({ params }) {
+	const { mealSlug } = await params
+	const meal = getMeal(mealSlug)
+
+	if (!meal) {
+		notFound()
+	}
+
+	return {
+		title: meal.title,
+		description: meal.summary,
+	}
+}
+
 export default function MealDetailPage({ params }) {
 	const { mealSlug } = use(params)
 	const meal = getMeal(mealSlug)
